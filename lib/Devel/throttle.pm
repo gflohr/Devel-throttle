@@ -12,4 +12,10 @@ package Devel::throttle;
 use vars qw ($VERSION);
 $VERSION = '0.01';
 
+package DB;
+
+sub DB {
+	select undef, undef, undef, 2;
+}
+
 1;

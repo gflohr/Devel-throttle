@@ -5,6 +5,8 @@ author: []
 abstract: Slow down execution of Perl scripts
 license: unknown
 provides:
+  DB:
+    file: lib/Devel/throttle.pm
   Devel::throttle:
     file: lib/Devel/throttle.pm
     version: 0.01
