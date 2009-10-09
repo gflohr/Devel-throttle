@@ -1,0 +1,11 @@
+commit 2aed5a7f869c6a3d89944b3a3feac5f48b3ae5e2
+Author: Guido Flohr <guido@imperia.net>
+Date:   Fri Oct 9 15:10:30 2009 +0300
+
+    Minimum infrastructure for CPAN and git.
+
+commit 79db56aad1dbb4c5fbe6fac3c7c87578b20c15d7
+Author: Guido Flohr <guido@imperia.net>
+Date:   Fri Oct 9 14:55:46 2009 +0300
+
+    Initial version.

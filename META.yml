@@ -1,0 +1,14 @@
+---
+name: Devel-throttle
+version: 0.01
+author: []
+abstract: Slow down execution of Perl scripts
+license: unknown
+provides:
+  Devel::throttle:
+    file: lib/Devel/throttle.pm
+    version: 0.01
+generated_by: Module::Build version 0.2808
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2
