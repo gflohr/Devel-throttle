@@ -11,24 +11,53 @@ package Devel::throttle;
 
 use strict;
 
-use vars qw ($VERSION);
+use vars qw ($VERSION @args);
 $VERSION = '0.01';
 
 sub import {
-	my ($self, $sec) = @_;
+	my ($self, $throttle, @code) = @_;
 
-	$DB::throttle = $sec;
+	$DB::throttle = $throttle;
+
+	if (@code) {
+		my $code = shift @code;
+
+		if (ref $code && 'CODE' eq ref $code) {
+			$DB::throttlefunc = $code;
+		}
+
+		if (ref $code && 'CODE' eq ref $code) {
+			@args = @code;
+		} else {
+			@args = ();
+			$DB::throttlefunc = sub { eval $code; warn $@ if $@ };
+		}
+	} else {
+		@args = ();
+	}
+}
+
+sub throttlefunc {
+	my $timeout = shift || 0;
+
+	$timeout *= 1;
+
+	return unless $timeout > 0;
+
+	select undef, undef, undef, $timeout
+		if $timeout;
 }
 
 package DB;
 
+$DB::throttlefunc = \&Devel::throttle::throttlefunc;
+
 sub DB {
-	if ($DB::throttle) {
-		my $throttle = 1 * $DB::throttle;
-	
-		select undef, undef, undef, $throttle
-			if $throttle > 0;
-	}
+	my @args = @Devel::throttle::args ?
+		@Devel::throttle::args : $DB::throttle; 
+
+	$DB::throttlefunc->(@args)
+		if $DB::throttlefunc;
 }
 
 1;
