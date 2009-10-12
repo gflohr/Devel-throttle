@@ -9,21 +9,22 @@
 
 package Devel::throttle;
 
-use vars qw ($VERSION $throtte);
+use strict;
+
+use vars qw ($VERSION);
 $VERSION = '0.01';
-$throttle = 0;
 
 sub import {
 	my ($self, $sec) = @_;
 
-	$throttle = $sec;
+	$DB::throttle = $sec;
 }
 
 package DB;
 
 sub DB {
-	if ($Devel::throttle::throttle) {
-		my $throttle = 1 * $Devel::throttle::throttle;
+	if ($DB::throttle) {
+		my $throttle = 1 * $DB::throttle;
 	
 		select undef, undef, undef, $throttle
 			if $throttle > 0;
