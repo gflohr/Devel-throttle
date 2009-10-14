@@ -1,5 +1,5 @@
 lib/Devel/throttle.pm           Slow down execution of Perl scripts
-t/01throttle.t			Test whether module compiles and loads.
+t/01throttle.t			Test whether module compiles and loads
 Build.PL			Experimental build script
 Changes				Detailed list of changes
 ChangeLog			Detailed list of changes
@@ -7,4 +7,5 @@ Makefile.PL                     Makefile generator
 MANIFEST			This list of files
 META.yml			Package meta information
 NEWS				News in each release
+README				Guess what!
 ReleaseNotes                    News in each release
