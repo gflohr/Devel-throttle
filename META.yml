@@ -1,7 +1,10 @@
 ---
 name: Devel-throttle
 version: 0.01
-author: []
+author:
+  - |-
+    Copyright (C) 2009, Guido Flohr E<lt>guido@imperia.netE<gt>, all
+    rights reserved.
 abstract: Slow down execution of Perl scripts
 license: unknown
 provides:
